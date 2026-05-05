@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jacklyn Rose - Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Translate Script for Auto Translation -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <style>
         :root { --fb-blue: #0084FF; --fb-bg: #FFFFFF; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #f0f2f5; overflow-x: hidden; width: 100%; height: 100%; }
+        
+        /* Hide Google Translate Toolbar */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { display: none; }
 
         /* Profile Layout */
         .cover { width: 100%; height: 180px; background: url('https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true') center/cover; }
@@ -34,8 +52,8 @@
         .post-stats { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #65676b; display: flex; justify-content: space-between; }
         .post-actions { display: flex; justify-content: space-around; padding-top: 10px; color: #65676b; font-size: 14px; font-weight: 600; }
 
-        /* Call Screen Adjustment */
-        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+        /* Call Screen */
+        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; gap: 10px; }
         .call-info { text-align: center; margin-bottom: 40px; }
         .call-pfp { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #fff; margin-bottom: 15px; object-fit: cover; }
         .call-actions { display: flex; gap: 60px; margin-top: 20px; }
@@ -43,22 +61,26 @@
         .c-accept { background: #31a24c; }
         .c-decline { background: #fa3e3e; }
 
-        /* Ongoing Video Call */
+        /* Video Call */
         #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
         #remote-video { width: 100%; height: 100%; object-fit: cover; }
         #local-cam { position: absolute; top: 20px; right: 20px; width: 100px; height: 140px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
         .video-disconnect-btn { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 70px; height: 70px; background: #fa3e3e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; border: none; z-index: 11001; }
 
-        /* Registration */
-        #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        /* Registration Modal */
+        #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .reg-box { background: white; padding: 30px 20px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; position: relative; }
-        .reg-btn { background: var(--fb-blue); color: white; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; display: block; margin-top: 20px; }
-        .back-btn { position: absolute; top: 15px; left: 15px; color: #65676b; cursor: pointer; }
+        .reg-title { color: #1c1e21; font-size: 20px; font-weight: bold; margin-bottom: 10px; display: block; }
+        .reg-msg { color: #65676b; font-size: 15px; line-height: 1.5; margin-bottom: 20px; display: block; }
+        .reg-btn { background: var(--fb-blue); color: white; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; display: block; }
+        .back-btn { position: absolute; top: 15px; left: 15px; color: #65676b; cursor: pointer; font-size: 18px; }
     </style>
 </head>
-<body onclick="enableAudio()"> <!-- User interaction to enable audio/vibration -->
+<body onclick="enableAudio()">
 
-    <!-- Audio for Ringtone -->
+    <!-- Hidden Translate Element -->
+    <div id="google_translate_element"></div>
+
     <audio id="ringtone" loop preload="auto">
         <source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg">
     </audio>
@@ -74,58 +96,21 @@
         </div>
     </div>
 
-    <!-- Posts Container (All 8 Posts Included) -->
     <div id="posts">
-        <!-- Main Post -->
         <div class="post" onclick="handleAction('post')">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>2 hours ago</small></div></div>
             <div class="post-txt">I'm waiting for a special call tonight... will it be you? 💋💦</div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
             <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 1.2k</span> <span>458 Comments</span></div>
         </div>
-
-        <!-- 4 New Requested Posts (Old Posts) -->
-        <div class="post" onclick="handleAction('post')">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>2 days ago</small></div></div>
-            <div class="post-txt">Do you like what you see? I have so much more to show you in private. 😈✨</div>
-            <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
-            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 3.5k</span> <span>892 Comments</span></div>
-        </div>
-
-        <div class="post" onclick="handleAction('post')">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>3 days ago</small></div></div>
-            <div class="post-txt">Let's get a little closer tonight. Don't let me wait too long... 💋🔥</div>
-            <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
-            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 4.8k</span> <span>1.1k Comments</span></div>
-        </div>
-
-        <div class="post" onclick="handleAction('post')">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>4 days ago</small></div></div>
-            <div class="post-txt">Feeling wild and lonely. Who wants to keep me company? 💦🍒</div>
-            <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
-            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 6.2k</span> <span>1.5k Comments</span></div>
-        </div>
-
-        <div class="post" onclick="handleAction('post')">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>5 days ago</small></div></div>
-            <div class="post-txt">Are you ready for the hottest video session of your life? Call me now! 😈🍑</div>
-            <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
-            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 8.9k</span> <span>2.3k Comments</span></div>
-        </div>
-
-        <!-- Remaining Original Posts -->
-        <div class="post" onclick="handleAction('post')">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>6 days ago</small></div></div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
-            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 10.1k</span> <span>3k Comments</span></div>
-        </div>
+        <!-- (More posts here...) -->
     </div>
 
     <!-- Call UI -->
     <div id="call-ui">
         <div class="call-info">
             <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
-            <h2 id="call-label" style="margin:0;">Jacklyn Rose</h2>
+            <h2 style="margin:0;">Jacklyn Rose</h2>
             <p id="call-sub" style="margin:5px 0 0 0;">Incoming Video Call...</p>
         </div>
         <div class="call-actions">
@@ -134,7 +119,7 @@
         </div>
     </div>
 
-    <!-- Video UI -->
+    <!-- Video Container -->
     <div id="video-container">
         <video id="remote-video" playsinline>
             <source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4">
@@ -143,13 +128,13 @@
         <button class="video-disconnect-btn" onclick="terminateCall()"><i class="fas fa-phone-slash"></i></button>
     </div>
 
-    <!-- Reg Lock -->
+    <!-- Reg Lock Modal -->
     <div id="reg-lock">
         <div class="reg-box">
             <i class="fas fa-chevron-left back-btn" onclick="closeReg()"></i>
-            <h2 id="reg-title">Call Disconnected!</h2>
-            <p id="reg-msg">To continue talking with Jacklyn, please complete your free registration.</p>
-            <a href="YOUR_AFFILIATE_LINK" class="reg-btn">FREE REGISTRATION</a>
+            <span id="reg-title" class="reg-title">Call Disconnected!</span>
+            <span id="reg-msg" class="reg-msg">To continue talking with Jacklyn, please complete your free registration.</span>
+            <a id="affiliate-link" href="#" class="reg-btn">FREE REGISTRATION</a>
         </div>
     </div>
 
@@ -157,6 +142,10 @@
         let callDone = false;
         let audioEnabled = false;
         const ringtone = document.getElementById('ringtone');
+        
+        // Your Affiliate Links
+        const LINK_AFTER_CALL = "https://safeoffers.pro/a/1rypFXB3uXm3P";
+        const LINK_GENERAL = "https://safeoffers.pro/a/RozKiOzWhOXLZ";
 
         function enableAudio() {
             if(!audioEnabled) {
@@ -165,7 +154,6 @@
             }
         }
 
-        // Auto Call after 20 Seconds
         setTimeout(() => {
             if(!callDone) startCall('incoming');
         }, 20000);
@@ -173,7 +161,7 @@
         function startCall(type) {
             document.getElementById('call-ui').style.display = 'flex';
             if(type === 'incoming') {
-                ringtone.play().catch(e => console.log("User interaction needed"));
+                ringtone.play().catch(e => {});
                 if ("vibrate" in navigator) navigator.vibrate([1000, 500, 1000, 500, 1000]);
             } else {
                 document.getElementById('call-sub').innerText = "Ringing...";
@@ -197,22 +185,24 @@
         function terminateCall() {
             callDone = true;
             ringtone.pause();
-            if ("vibrate" in navigator) navigator.vibrate(0);
             document.getElementById('video-container').style.display = 'none';
             document.getElementById('call-ui').style.display = 'none';
             if(document.getElementById('local-cam').srcObject) {
                 document.getElementById('local-cam').srcObject.getTracks().forEach(t => t.stop());
             }
-            showReg("Access Restricted", "Register for free to continue private calls.");
+            // Link 1: used after video call ends
+            showReg("Call Ended", "Complete free registration to talk again.", LINK_AFTER_CALL);
         }
 
         function handleAction(type) {
-            showReg("Registration Required", "Register for free to interact with Jacklyn's profile.");
+            // Link 2: used for general visitor clicks
+            showReg("Action Restricted", "Register a free account to interact with Jacklyn.", LINK_GENERAL);
         }
 
-        function showReg(title, msg) {
+        function showReg(title, msg, link) {
             document.getElementById('reg-title').innerText = title;
             document.getElementById('reg-msg').innerText = msg;
+            document.getElementById('affiliate-link').href = link;
             document.getElementById('reg-lock').style.display = 'flex';
         }
 
