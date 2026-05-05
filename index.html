@@ -34,14 +34,14 @@
         .post-stats { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #65676b; display: flex; justify-content: space-between; }
         .post-actions { display: flex; justify-content: space-around; padding-top: 10px; color: #65676b; font-size: 14px; font-weight: 600; }
 
-        /* Call Screens */
-        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; gap: 15px; } /* Gap reduced for better alignment */
-        .call-actions { display: flex; gap: 60px; margin-top: 50px; }
-        .c-btn { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; border: none; }
+        /* Call Screen Adjustment */
+        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+        .call-info { text-align: center; margin-bottom: 40px; }
+        .call-pfp { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #fff; margin-bottom: 15px; object-fit: cover; }
+        .call-actions { display: flex; gap: 60px; margin-top: 20px; }
+        .c-btn { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; border: none; cursor: pointer; }
         .c-accept { background: #31a24c; }
         .c-decline { background: #fa3e3e; }
-        #call-label { margin: 5px 0 0 0; font-size: 26px; } /* Real spacing for name */
-        #call-sub { margin: 0; color: #ccc; }
 
         /* Ongoing Video Call */
         #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
@@ -49,33 +49,23 @@
         #local-cam { position: absolute; top: 20px; right: 20px; width: 100px; height: 140px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
         .video-disconnect-btn { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 70px; height: 70px; background: #fa3e3e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; border: none; z-index: 11001; }
 
-        /* Registration Template */
+        /* Registration */
         #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .reg-box { background: white; padding: 30px 20px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; position: relative; }
-        .reg-box h2 { color: #1c1e21; font-size: 20px; margin-top: 0; }
-        .reg-box p { color: #65676b; font-size: 15px; line-height: 1.5; }
         .reg-btn { background: var(--fb-blue); color: white; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; display: block; margin-top: 20px; }
-        .back-btn { position: absolute; top: 15px; left: 15px; color: #65676b; font-size: 18px; cursor: pointer; }
+        .back-btn { position: absolute; top: 15px; left: 15px; color: #65676b; cursor: pointer; }
     </style>
 </head>
-<body>
+<body onclick="enableAudio()"> <!-- User interaction to enable audio/vibration -->
 
     <!-- Audio for Ringtone -->
-    <audio id="ringtone" loop>
+    <audio id="ringtone" loop preload="auto">
         <source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg">
     </audio>
 
-    <video id="remote-video-hidden" preload="auto" style="display:none;">
-        <source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4">
-    </video>
-
-    <!-- Main UI -->
     <div class="cover"></div>
     <div class="profile-card">
-        <div class="pfp-wrap">
-            <div class="pfp"></div>
-            <div class="online"></div>
-        </div>
+        <div class="pfp-wrap"><div class="pfp"></div><div class="online"></div></div>
         <div class="name">Jacklyn Rose</div>
         <div class="bio">"Sometimes the best conversations happen in private. Are you ready for me? 🔥"</div>
         <div class="btn-row">
@@ -84,30 +74,67 @@
         </div>
     </div>
 
-    <!-- Posts Container -->
+    <!-- Posts Container (All 8 Posts Included) -->
     <div id="posts">
+        <!-- Main Post -->
         <div class="post" onclick="handleAction('post')">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>2 hours ago</small></div></div>
             <div class="post-txt">I'm waiting for a special call tonight... will it be you? 💋💦</div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
             <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 1.2k</span> <span>458 Comments</span></div>
-            <div class="post-actions"><span><i class="far fa-thumbs-up"></i> Like</span> <span onclick="handleAction('comment')"><i class="far fa-comment"></i> Comment</span></div>
         </div>
-        <!-- (Other posts same as previous version) -->
+
+        <!-- 4 New Requested Posts (Old Posts) -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>2 days ago</small></div></div>
+            <div class="post-txt">Do you like what you see? I have so much more to show you in private. 😈✨</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 3.5k</span> <span>892 Comments</span></div>
+        </div>
+
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>3 days ago</small></div></div>
+            <div class="post-txt">Let's get a little closer tonight. Don't let me wait too long... 💋🔥</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 4.8k</span> <span>1.1k Comments</span></div>
+        </div>
+
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>4 days ago</small></div></div>
+            <div class="post-txt">Feeling wild and lonely. Who wants to keep me company? 💦🍒</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 6.2k</span> <span>1.5k Comments</span></div>
+        </div>
+
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>5 days ago</small></div></div>
+            <div class="post-txt">Are you ready for the hottest video session of your life? Call me now! 😈🍑</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 8.9k</span> <span>2.3k Comments</span></div>
+        </div>
+
+        <!-- Remaining Original Posts -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose</strong><br><small>6 days ago</small></div></div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 10.1k</span> <span>3k Comments</span></div>
+        </div>
     </div>
 
     <!-- Call UI -->
     <div id="call-ui">
-        <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" style="width:130px; height:130px; border-radius:50%; border:3px solid #fff; object-fit: cover;">
-        <h2 id="call-label">Jacklyn Rose</h2>
-        <p id="call-sub">Incoming Video Call...</p>
+        <div class="call-info">
+            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
+            <h2 id="call-label" style="margin:0;">Jacklyn Rose</h2>
+            <p id="call-sub" style="margin:5px 0 0 0;">Incoming Video Call...</p>
+        </div>
         <div class="call-actions">
             <button class="c-btn c-decline" onclick="terminateCall()"><i class="fas fa-phone-slash"></i></button>
             <button class="c-btn c-accept" onclick="acceptCall()"><i class="fas fa-video"></i></button>
         </div>
     </div>
 
-    <!-- Video Container -->
+    <!-- Video UI -->
     <div id="video-container">
         <video id="remote-video" playsinline>
             <source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4">
@@ -116,58 +143,51 @@
         <button class="video-disconnect-btn" onclick="terminateCall()"><i class="fas fa-phone-slash"></i></button>
     </div>
 
-    <!-- Reg Lock Modal -->
+    <!-- Reg Lock -->
     <div id="reg-lock">
         <div class="reg-box">
             <i class="fas fa-chevron-left back-btn" onclick="closeReg()"></i>
             <h2 id="reg-title">Call Disconnected!</h2>
-            <p id="reg-msg">Your video call session has ended. To continue talking with Jacklyn, please complete your free registration.</p>
+            <p id="reg-msg">To continue talking with Jacklyn, please complete your free registration.</p>
             <a href="YOUR_AFFILIATE_LINK" class="reg-btn">FREE REGISTRATION</a>
         </div>
     </div>
 
     <script>
         let callDone = false;
-        const video = document.getElementById('remote-video');
-        const regLock = document.getElementById('reg-lock');
+        let audioEnabled = false;
         const ringtone = document.getElementById('ringtone');
 
-        // Auto Call after 20 Seconds (From Website)
+        function enableAudio() {
+            if(!audioEnabled) {
+                ringtone.play().then(() => { ringtone.pause(); ringtone.currentTime = 0; });
+                audioEnabled = true;
+            }
+        }
+
+        // Auto Call after 20 Seconds
         setTimeout(() => {
             if(!callDone) startCall('incoming');
         }, 20000);
 
         function startCall(type) {
-            if(callDone) { handleAction('general'); return; }
-            
             document.getElementById('call-ui').style.display = 'flex';
-            
-            // Only play ringtone and vibrate if it's an AUTOMATIC incoming call from website
             if(type === 'incoming') {
-                ringtone.play().catch(e => console.log("Audio play deferred"));
-                if ("vibrate" in navigator) {
-                    navigator.vibrate([1000, 500, 1000, 500, 1000]);
-                }
-            }
-
-            if(type === 'outgoing') {
+                ringtone.play().catch(e => console.log("User interaction needed"));
+                if ("vibrate" in navigator) navigator.vibrate([1000, 500, 1000, 500, 1000]);
+            } else {
                 document.getElementById('call-sub').innerText = "Ringing...";
-                // No Ringtone for visitor-initiated call as per request
                 setTimeout(acceptCall, 4000);
             }
         }
 
         async function acceptCall() {
             ringtone.pause();
-            ringtone.currentTime = 0;
             if ("vibrate" in navigator) navigator.vibrate(0);
-
             document.getElementById('call-ui').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
-            video.play();
-            
+            document.getElementById('remote-video').play();
             setTimeout(terminateCall, 13000);
-
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true });
                 document.getElementById('local-cam').srcObject = stream;
@@ -178,36 +198,25 @@
             callDone = true;
             ringtone.pause();
             if ("vibrate" in navigator) navigator.vibrate(0);
-            
-            video.pause();
-            document.getElementById('call-ui').style.display = 'none';
             document.getElementById('video-container').style.display = 'none';
-            
+            document.getElementById('call-ui').style.display = 'none';
             if(document.getElementById('local-cam').srcObject) {
                 document.getElementById('local-cam').srcObject.getTracks().forEach(t => t.stop());
             }
-            showReg("Call Disconnected!", "Your call was disconnected because you haven't verified your profile. Register for free to call again.");
+            showReg("Access Restricted", "Register for free to continue private calls.");
         }
 
         function handleAction(type) {
-            if(!callDone) {
-                if(type === 'message' || type === 'post' || type === 'comment') {
-                    showReg("Action Restricted", "You must register a free account to interact with Jacklyn's profile.");
-                }
-                return;
-            }
-            showReg("Access Denied", "To continue, please complete your free registration.");
+            showReg("Registration Required", "Register for free to interact with Jacklyn's profile.");
         }
 
         function showReg(title, msg) {
             document.getElementById('reg-title').innerText = title;
             document.getElementById('reg-msg').innerText = msg;
-            regLock.style.display = 'flex';
+            document.getElementById('reg-lock').style.display = 'flex';
         }
 
-        function closeReg() {
-            regLock.style.display = 'none';
-        }
+        function closeReg() { document.getElementById('reg-lock').style.display = 'none'; }
     </script>
 </body>
 </html>
