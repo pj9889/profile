@@ -11,7 +11,7 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #f0f2f5; overflow-x: hidden; width: 100%; height: 100%; }
         
-        /* গুগল ট্রান্সলেট বার হাইড করার জন্য */
+        /* গুগল ট্রান্সলেট বার হাইড করা */
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget { display: none !important; }
         body { top: 0px !important; }
 
@@ -19,12 +19,9 @@
         .profile-card { background: white; text-align: center; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
         .pfp-wrap { position: relative; margin-top: -60px; display: inline-block; }
         .pfp { width: 140px; height: 140px; border-radius: 50%; border: 4px solid white; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; }
-        
-        /* অ্যাক্টিভ সিম্বল */
-        .online { position: absolute; bottom: 10px; right: 10px; width: 22px; height: 22px; background: #31a24c; border: 3px solid white; border-radius: 50%; z-index: 2; }
+        .online { position: absolute; bottom: 10px; right: 10px; width: 22px; height: 22px; background: #31a24c; border: 3px solid white; border-radius: 50%; }
         
         .name { font-size: 24px; font-weight: bold; margin: 10px 0 2px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        /* ভেরিফাইড সিম্বল */
         .verified { color: #0084FF; font-size: 20px; }
         
         .bio { color: #65676b; font-style: italic; padding: 0 30px; margin-bottom: 15px; font-size: 14px; }
@@ -41,7 +38,6 @@
         .post-img { width: calc(100% + 30px); margin-left: -15px; height: auto; display: block; max-height: 450px; object-fit: cover; }
         .post-stats { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #65676b; display: flex; justify-content: space-between; }
 
-        /* পপআপ এবং ভিডিও কল লেআউট আগের মতোই আছে */
         #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
         .call-info { text-align: center; margin-bottom: 40px; }
         .call-pfp { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #fff; margin-bottom: 15px; object-fit: cover; }
@@ -63,7 +59,6 @@
 </head>
 <body onclick="enableAudio()">
 
-    <!-- গুগল ট্রান্সলেট এলিমেন্ট (হাইড করা) -->
     <div id="google_translate_element" style="display:none;"></div>
 
     <audio id="ringtone" loop preload="auto">
@@ -72,14 +67,8 @@
 
     <div class="cover"></div>
     <div class="profile-card">
-        <div class="pfp-wrap">
-            <div class="pfp"></div>
-            <div class="online"></div>
-        </div>
-        <div class="name">
-            Jacklyn Rose 
-            <i class="fas fa-check-circle verified"></i>
-        </div>
+        <div class="pfp-wrap"><div class="pfp"></div><div class="online"></div></div>
+        <div class="name">Jacklyn Rose <i class="fas fa-check-circle verified"></i></div>
         <div class="bio">"Sometimes the best conversations happen in private. Are you ready for me? 🔥"</div>
         <div class="btn-row">
             <button class="btn btn-call" onclick="startCall('outgoing')"><i class="fas fa-video"></i> Video Call</button>
@@ -88,24 +77,64 @@
     </div>
 
     <div id="posts">
-        <!-- আপনার সব পোস্ট এখানে সেম রাখা হয়েছে -->
+        <!-- Post 1 -->
         <div class="post" onclick="handleAction('post')">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>2 hours ago</small></div></div>
             <div class="post-txt">Craving for some midnight fun? Call me now and let's get wet together... 💋💦</div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
             <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 1.2k</span> <span>458 Comments</span></div>
         </div>
-        
+        <!-- Post 2 -->
         <div class="post" onclick="handleAction('post')">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>2 days ago</small></div></div>
             <div class="post-txt">Do you like what you see? I have so much more to show you in private. 😈✨</div>
             <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
             <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 3.5k</span> <span>892 Comments</span></div>
         </div>
-        <!-- বাকি পোস্টগুলো এখানে সয়ংক্রিয়ভাবে থাকবে... -->
+        <!-- Post 3 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>3 days ago</small></div></div>
+            <div class="post-txt">Let's get a little closer tonight. Don't let me wait too long... 💋🔥</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 4.8k</span> <span>1.1k Comments</span></div>
+        </div>
+        <!-- Post 4 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>4 days ago</small></div></div>
+            <div class="post-txt">Feeling wild and lonely. Who wants to keep me company? 💦🍒</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 6.2k</span> <span>1.5k Comments</span></div>
+        </div>
+        <!-- Post 5 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>5 days ago</small></div></div>
+            <div class="post-txt">I'm home alone and so bored... want to see what I'm wearing? Call me! 😈🍑</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 8.9k</span> <span>2.3k Comments</span></div>
+        </div>
+        <!-- Post 6 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>6 days ago</small></div></div>
+            <div class="post-txt">I can't wait to hear your voice while I touch myself. Ring me up! 💦🔥</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 10.1k</span> <span>3k Comments</span></div>
+        </div>
+        <!-- Post 7 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>1 week ago</small></div></div>
+            <div class="post-txt">Thinking of all the naughty things I want to do with you tonight... 💖🍑</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 12k</span> <span>4k Comments</span></div>
+        </div>
+        <!-- Post 8 -->
+        <div class="post" onclick="handleAction('post')">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>1 week ago</small></div></div>
+            <div class="post-txt">Who's ready for the hottest private show of your life? Call me now! 🍑💦✨</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true" class="post-img">
+            <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 15k</span> <span>5.2k Comments</span></div>
+        </div>
     </div>
 
-    <!-- পপআপ এবং ভিডিও কন্টেইনার আগের মতোই আছে -->
     <div id="call-ui">
         <div class="call-info">
             <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
@@ -136,15 +165,10 @@
     </div>
 
     <script type="text/javascript">
-        // অটো ট্রান্সলেট ফাংশন
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                autoDisplay: false
-            }, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
         }
 
-        // ভিজিটরের ভাষা শনাক্ত করে অটো ট্রান্সলেট ট্রিগার করা
         window.addEventListener('load', function() {
             setTimeout(function() {
                 var userLang = navigator.language || navigator.userLanguage;
@@ -159,7 +183,6 @@
             }, 1000); 
         });
 
-        // আপনার আগের সব স্ক্রিপ্ট ফাংশন এখানে সেম আছে
         let callCount = 0; 
         let audioEnabled = false;
         let isUserCalling = false; 
@@ -178,14 +201,10 @@
         function setupAutoCall(delay = 20000) {
             clearTimeout(autoCallTimer);
             autoCallTimer = setTimeout(() => {
-                if(callCount === 0 && !isUserCalling) {
-                    startCall('incoming');
-                } else if (!isUserCalling) {
-                    startCall('incoming_restricted');
-                }
+                if(callCount === 0 && !isUserCalling) startCall('incoming');
+                else if (!isUserCalling) startCall('incoming_restricted');
             }, delay);
         }
-
         setupAutoCall(20000);
 
         function startCall(type) {
@@ -195,14 +214,12 @@
                 acceptBtn.style.display = 'flex'; 
                 ringtone.play().catch(e => {});
                 if ("vibrate" in navigator) navigator.vibrate([1000, 500, 1000, 500, 1000]);
-                if(type === 'incoming_restricted') {
-                    document.getElementById('call-ui').setAttribute('data-restricted', 'true');
-                }
+                if(type === 'incoming_restricted') document.getElementById('call-ui').setAttribute('data-restricted', 'true');
             } else {
                 isUserCalling = true;
                 clearTimeout(autoCallTimer);
                 if(callCount > 0) {
-                   showReg("Access Restricted", "You have already used your free call. Register to continue.", LINK_GENERAL_CLICK);
+                   showReg("Access Restricted", "You have already used your free call.", LINK_GENERAL_CLICK);
                    document.getElementById('call-ui').style.display = 'none';
                    isUserCalling = false;
                    return;
@@ -218,7 +235,7 @@
             if ("vibrate" in navigator) navigator.vibrate(0);
             if(document.getElementById('call-ui').getAttribute('data-restricted') === 'true') {
                 document.getElementById('call-ui').style.display = 'none';
-                showReg("Call Disconnected", "Registration required to receive more calls.", LINK_VIDEO_END);
+                showReg("Call Disconnected", "Registration required.", LINK_VIDEO_END);
                 return;
             }
             document.getElementById('call-ui').style.display = 'none';
@@ -239,25 +256,17 @@
             if(document.getElementById('local-cam').srcObject) {
                 document.getElementById('local-cam').srcObject.getTracks().forEach(t => t.stop());
             }
-            if(isUserCalling) {
-                isUserCalling = false;
-                setupAutoCall(100);
-            } else {
-                showReg("Call Ended", "Complete free registration to talk again.", LINK_VIDEO_END);
-            }
+            if(isUserCalling) { isUserCalling = false; setupAutoCall(100); }
+            else { showReg("Call Ended", "Complete registration to talk again.", LINK_VIDEO_END); }
         }
 
-        function handleAction(type) {
-            showReg("Registration Required", "Register for free to interact with Jacklyn's profile.", LINK_GENERAL_CLICK);
-        }
-
+        function handleAction(type) { showReg("Registration Required", "Register for free to interact.", LINK_GENERAL_CLICK); }
         function showReg(title, msg, url) {
             document.getElementById('reg-title').innerText = title;
             document.getElementById('reg-msg').innerText = msg;
             document.getElementById('reg-link').href = url;
             document.getElementById('reg-lock').style.display = 'flex';
         }
-
         function closeReg() { document.getElementById('reg-lock').style.display = 'none'; }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
