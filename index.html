@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacklyn Rose - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --fb-blue: #1877F2;
+            --fb-bg: #f0f2f5;
+        }
+        body { margin: 0; font-family: Helvetica, Arial, sans-serif; background: var(--fb-bg); color: #1c1e21; overflow-x: hidden; }
+        
+        /* Header & Profile */
+        .cover-photo { width: 100%; height: 200px; background: #ddd url('YOUR_COVER_IMAGE_URL') center/cover; }
+        .profile-section { position: relative; background: white; padding-bottom: 15px; text-align: center; }
+        .profile-pic-container { position: relative; margin-top: -80px; display: inline-block; }
+        .profile-pic { width: 160px; height: 160px; border-radius: 50%; border: 4px solid white; background: #eee url('YOUR_PROFILE_IMAGE_URL') center/cover; }
+        .online-dot { position: absolute; bottom: 15px; right: 15px; width: 25px; height: 25px; background: #31a24c; border: 3px solid white; border-radius: 50%; }
+        
+        .user-info h1 { margin: 10px 0 5px; font-size: 24px; }
+        .stats { font-size: 14px; color: #65676b; margin-bottom: 10px; }
+        .bio { padding: 0 20px; font-style: italic; color: #4b4f56; margin-bottom: 10px; }
+        .location { font-size: 14px; color: #65676b; margin-bottom: 15px; }
+
+        /* Action Buttons */
+        .action-buttons { display: flex; justify-content: center; gap: 8px; padding: 0 10px; }
+        .btn { flex: 1; border: none; border-radius: 6px; padding: 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; max-width: 150px; }
+        .btn-call { background: #e4e6eb; color: black; }
+        .btn-msg { background: var(--fb-blue); color: white; }
+        .btn-poke { background: #e4e6eb; color: black; }
+
+        /* Posts */
+        .post { background: white; margin-top: 15px; padding: 15px; }
+        .post-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .post-pfp { width: 40px; height: 40px; border-radius: 50%; background: url('YOUR_PROFILE_IMAGE_URL') center/cover; }
+        .post-desc { margin-bottom: 10px; font-size: 14px; }
+        .post-img { width: 100%; border-radius: 8px; }
+        .post-meta { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; color: #65676b; font-size: 13px; }
+        .post-actions { display: flex; justify-content: space-around; padding-top: 10px; }
+        .see-more { text-align: center; padding: 20px; background: white; margin-top: 10px; color: var(--fb-blue); font-weight: bold; cursor: pointer; }
+
+        /* Calling Interface Overlay */
+        #call-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: none; z-index: 1000; flex-direction: column; align-items: center; justify-content: space-between; color: white; padding: 50px 0; }
+        .caller-img { width: 120px; height: 120px; border-radius: 50%; border: 2px solid white; }
+        .call-status { margin-top: 10px; font-size: 18px; }
+        .call-btns { display: flex; gap: 50px; }
+        .call-btn { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; cursor: pointer; }
+        .accept { background: #31a24c; }
+        .decline { background: #fa3e3e; }
+
+        /* Video Call Screen */
+        #video-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; display: none; z-index: 2000; }
+        #main-video { width: 100%; height: 100%; object-fit: cover; }
+        #user-camera { position: absolute; top: 20px; right: 20px; width: 120px; height: 180px; background: #333; border: 2px solid white; border-radius: 8px; object-fit: cover; transform: scaleX(-1); }
+
+        /* Registration Template */
+        #reg-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; background: white; padding: 25px; border-radius: 12px; text-align: center; box-shadow: 0 0 20px rgba(0,0,0,0.5); display: none; z-index: 3000; }
+        #reg-modal h2 { color: #fa3e3e; font-size: 18px; }
+        .reg-btn { display: inline-block; margin-top: 15px; padding: 12px 25px; background: var(--fb-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- Profile UI -->
+    <div class="cover-photo"></div>
+    <div class="profile-section">
+        <div class="profile-pic-container">
+            <div class="profile-pic"></div>
+            <div class="online-dot"></div>
+        </div>
+        <div class="user-info">
+            <h1>Jacklyn Rose</h1>
+            <div class="stats"><b>4.7K</b> followers • <b>163</b> following • <b>4.1K</b> posts</div>
+            <div class="bio">"A woman who knows her worth... looking for someone to explore New York tonight. 🔥"</div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> New York, USA</div>
+        </div>
+        <div class="action-buttons">
+            <button class="btn btn-call" onclick="startOutgoingCall()"><i class="fas fa-video"></i> Video Call</button>
+            <button class="btn btn-msg" onclick="showReg()"><i class="fab fa-facebook-messenger"></i> Message</button>
+            <button class="btn btn-poke" onclick="showReg()"><i class="fas fa-hand-point-right"></i> Poke</button>
+        </div>
+    </div>
+
+    <!-- Posts Section -->
+    <div id="posts-container">
+        <!-- Post 1 -->
+        <div class="post">
+            <div class="post-header">
+                <div class="post-pfp"></div>
+                <div><b>Jacklyn Rose</b><br><small>2 hours ago • New York</small></div>
+            </div>
+            <div class="post-desc">Loving the weather today! Anyone free for a call? 💋</div>
+            <div class="post-meta"><span>👍 1.2K</span> <span>450 Comments</span></div>
+            <div class="post-actions">
+                <span onclick="this.style.color='#1877F2'">Like</span>
+                <span onclick="showReg()">Comment</span>
+                <span onclick="showReg()">Share</span>
+            </div>
+        </div>
+    </div>
+    <div class="see-more" onclick="showReg()">See More Posts...</div>
+
+    <!-- Calling Overlays -->
+    <div id="call-overlay">
+        <img src="YOUR_PROFILE_IMAGE_URL" class="caller-img">
+        <h2 id="caller-name">Jacklyn Rose</h2>
+        <div class="call-status" id="call-status">Incoming Video Call...</div>
+        <div class="call-btns">
+            <div class="call-btn decline" onclick="endCall()"><i class="fas fa-times"></i></div>
+            <div class="call-btn accept" onclick="acceptCall()"><i class="fas fa-video"></i></div>
+        </div>
+    </div>
+
+    <div id="video-screen">
+        <video id="main-video" playsinline>
+            <source src="YOUR_VIDEO_URL" type="video/mp4">
+        </video>
+        <video id="user-camera" autoplay playsinline muted></video>
+    </div>
+
+    <div id="reg-modal">
+        <h2>Call Disconnected!</h2>
+        <p>Your call was dropped because you haven't finished your registration on our website yet.</p>
+        <a href="YOUR_AFFILIATE_LINK" class="reg-btn">Complete Registration Now</a>
+    </div>
+
+    <script>
+        let hasSpoken = false;
+        const callOverlay = document.getElementById('call-overlay');
+        const videoScreen = document.getElementById('video-screen');
+        const mainVideo = document.getElementById('main-video');
+        const userCam = document.getElementById('user-camera');
+        const regModal = document.getElementById('reg-modal');
+
+        // 10 Second Auto Incoming Call
+        setTimeout(() => {
+            if(!hasSpoken) {
+                showIncomingCall();
+            }
+        }, 10000);
+
+        function showIncomingCall() {
+            callOverlay.style.display = 'flex';
+            document.getElementById('call-status').innerText = "Incoming Video Call...";
+        }
+
+        function startOutgoingCall() {
+            if(hasSpoken) { showReg(); return; }
+            callOverlay.style.display = 'flex';
+            document.getElementById('call-status').innerText = "Ringing...";
+            setTimeout(() => {
+                acceptCall();
+            }, 5000);
+        }
+
+        async function acceptCall() {
+            callOverlay.style.display = 'none';
+            videoScreen.style.display = 'block';
+            hasSpoken = true;
+            
+            // Play main video
+            mainVideo.play();
+
+            // Try to access user camera
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                userCam.srcObject = stream;
+            } catch (err) {
+                console.log("Camera access denied");
+            }
+
+            // After video ends or 15 seconds, show registration
+            mainVideo.onended = () => { endCall(); };
+            setTimeout(() => { endCall(); }, 20000); // safety timeout
+        }
+
+        function endCall() {
+            videoScreen.style.display = 'none';
+            callOverlay.style.display = 'none';
+            if (userCam.srcObject) {
+                userCam.srcObject.getTracks().forEach(track => track.stop());
+            }
+            showReg();
+        }
+
+        function showReg() {
+            regModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+    </script>
+</body>
+</html>
